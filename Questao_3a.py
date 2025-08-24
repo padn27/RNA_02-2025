@@ -3,9 +3,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# =========================
+
 # Configurações iniciais
-# =========================
+
 np.random.seed(42)  # para resultados reproduzíveis
 
 N = 20  # número de amostras
@@ -17,9 +17,9 @@ y = 0.5*x**2 + 3*x + 10 + ruido  # função geradora com ruído
 x_plot = np.linspace(-15, 10, 200)
 y_real = 0.5*x_plot**2 + 3*x_plot + 10
 
-# =========================
+
 # Ajuste polinomial
-# =========================
+
 graus = range(1, 9)  # polinômios do grau 1 ao 8
 
 plt.figure(figsize=(20, 15))
@@ -29,9 +29,9 @@ for i, p in enumerate(graus, 1):
     coef = np.polyfit(x, y, p)  # encontra os coeficientes w
     y_poly = np.polyval(coef, x_plot)  # avalia o polinômio nos pontos para plot
 
-    # =========================
+  
     # Plotagem
-    # =========================
+
     plt.subplot(3, 3, i)
     plt.scatter(x, y, color='red', label='Amostras')
     plt.plot(x_plot, y_real, color='black', label='Função geradora')
@@ -53,9 +53,8 @@ for i, p in enumerate(graus, 1):
 plt.tight_layout()
 plt.show()
 
-# =========================
 # Observações
-# =========================
+
 print("Observações:")
 print("- Underfitting ocorre para grau 1 e 2: polinômio não consegue capturar a curva quadrática.")
 print("- Bom ajuste ocorre para grau 3 a 5: segue bem a tendência da função geradora.")
@@ -75,5 +74,5 @@ print("- Overfitting ocorre para grau 6 a 8: polinômio tenta passar exatamente 
 ### p=3 ou p=4 → bom ajuste (aproxima bem a função quadrática) ###
 ### p≥6 → overfitting (polinômio começa a oscilar para passar exatamente por cada ponto com ruído) ###
 
-### O que esse código faz: Gera 20 amostras da função 𝑓𝑔(𝑥)=0.5𝑥^2+3𝑥+10 com ruído gaussiano, ajusta polinômios de grau 1 a 8 usando least squares (np.polyfit); Plota cada polinômio, a função real e os pontos amostrados. Marca no título se o polinômio está em underfitting, bom ajuste ou overfitting. Exibe observações sobre cada caso.### 
+### O código gera 20 amostras da função 𝑓𝑔(𝑥)=0.5𝑥^2+3𝑥+10 com ruído gaussiano, ajusta polinômios de grau 1 a 8 usando least squares (np.polyfit); Plota cada polinômio, a função real e os pontos amostrados. Marca no título se o polinômio está em underfitting, bom ajuste ou overfitting. Exibe observações sobre cada caso.### 
 

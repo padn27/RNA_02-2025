@@ -3,9 +3,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# =========================
+
 # Configurações iniciais
-# =========================
+
 np.random.seed(42)
 
 N = 100  # número de amostras
@@ -17,17 +17,17 @@ y = 0.5*x**2 + 3*x + 10 + ruido  # função geradora com ruído
 x_plot = np.linspace(-15, 10, 400)
 y_real = 0.5*x_plot**2 + 3*x_plot + 10
 
-# =========================
+
 # Função para montar matriz H
-# =========================
+
 def montar_H(x, grau):
     """Constrói a matriz H para polinômio de dado grau"""
     H = np.vander(x, grau+1, increasing=True)  # colunas: x^0, x^1, ..., x^p
     return H
 
-# =========================
+
 # Ajuste polinomial usando pseudoinversa
-# =========================
+
 graus = range(1, 9)
 
 plt.figure(figsize=(20, 15))
@@ -38,9 +38,9 @@ for i, p in enumerate(graus, 1):
     H_plot = montar_H(x_plot, p)
     y_poly = H_plot @ w  # avaliação do polinômio nos pontos para plot
 
-    # =========================
+
     # Plotagem
-    # =========================
+
     plt.subplot(3, 3, i)
     plt.scatter(x, y, color='red', label='Amostras')
     plt.plot(x_plot, y_real, color='black', label='Função geradora')
@@ -62,9 +62,9 @@ for i, p in enumerate(graus, 1):
 plt.tight_layout()
 plt.show()
 
-# =========================
+
 # Observações
-# =========================
+
 print("Observações com pseudoinversa:")
 print("- Underfitting: grau 1 e 2.")
 print("- Bom ajuste: grau 3 a 6.")
